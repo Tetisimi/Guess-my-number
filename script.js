@@ -4,7 +4,7 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
 
-document.querySelector('.check').addEventListener('click', function () {
+const checkFunction = function check() {
   const guess = Number(document.querySelector('.guess').value);
 
   // When there is no input
@@ -35,6 +35,13 @@ document.querySelector('.check').addEventListener('click', function () {
         '💀 Sorry you lost, play again?';
       document.querySelector('.score').textContent = 0;
     }
+  }
+};
+
+document.querySelector('.check').addEventListener('click', checkFunction);
+document.querySelector('.guess').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    checkFunction();
   }
 });
 
